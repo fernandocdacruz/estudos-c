@@ -7,4 +7,7 @@ add_executable(rascunho001 main.c
         001.c
         002.c
         003.c
+        004.c
+        005.c
+        006.c
 )
