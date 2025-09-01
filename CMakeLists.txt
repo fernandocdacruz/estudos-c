@@ -10,4 +10,5 @@ add_executable(rascunho001 main.c
         004.c
         005.c
         006.c
+        008.c
 )
