@@ -15,7 +15,9 @@ int main() {
     lista->dado = 1;
     lista->proximo = NULL;
 
-    printf("%d", lista->dado);
+    printf("\n%d", lista->dado);
+    printf("\n\n");
+    system("pause");
 
     return 0;
 

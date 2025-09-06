@@ -7,29 +7,46 @@ struct no {
 };
 
 typedef struct no *ptr_no;
-ptr_no lista;
 
 int main() {
     int dado;
+    ptr_no lista = NULL;
+    ptr_no cur = NULL;
+
+    // Primeiro nó
     printf("Digite o dado do primeiro no: ");
     scanf("%d", &dado);
-    lista = (ptr_no) malloc(sizeof(struct no));
-    lista->dado = dado;
-    printf("%d", lista->dado);
-    printf("Digite o dado do segundo no: ");
-    scanf("%d", &dado);
-    while (lista->proximo != NULL) {
-        lista = lista->proximo;
-    }
-    lista->proximo = (ptr_no) malloc(sizeof(struct no));
-    lista = lista->proximo;
+
+    lista = malloc(sizeof(struct no));
     lista->dado = dado;
     lista->proximo = NULL;
-    while (lista->proximo != NULL) {
-        printf("%d", lista->dado);
-        lista = lista->proximo;
+    cur = lista;  // ponteiro auxiliar
+
+    // Segundo nó
+    printf("Digite o dado do segundo no: ");
+    scanf("%d", &dado);
+
+    cur->proximo = malloc(sizeof(struct no));
+    cur = cur->proximo;
+    cur->dado = dado;
+    cur->proximo = NULL;
+
+    // Imprime a lista
+    cur = lista;
+    printf("\nConteudo da lista:\n");
+    while (cur != NULL) {
+        printf("%d\n", cur->dado);
+        cur = cur->proximo;
     }
-    printf("%d", lista->dado);
+
+    // Libera memória
+    cur = lista;
+    while (cur != NULL) {
+        ptr_no next = cur->proximo;
+        free(cur);
+        cur = next;
+    }
 
     return 0;
 }
+
